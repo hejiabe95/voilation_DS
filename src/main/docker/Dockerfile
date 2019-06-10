@@ -14,7 +14,7 @@ USER jhipster
 
 ENTRYPOINT ["./entrypoint.sh"]
 
-EXPOSE 8085
+EXPOSE 8088
 
 ADD *.war app.war
 

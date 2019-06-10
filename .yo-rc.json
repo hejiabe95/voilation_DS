@@ -1,14 +1,14 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.intf.invitations"
+      "packageName": "com.intf.inv"
     },
     "jhipsterVersion": "5.8.1",
     "applicationType": "microservice",
     "baseName": "invitations",
-    "packageName": "com.intf.invitations",
-    "packageFolder": "com/intf/invitations",
-    "serverPort": "8085",
+    "packageName": "com.intf.inv",
+    "packageFolder": "com/intf/inv",
+    "serverPort": "8088",
     "authenticationType": "jwt",
     "cacheProvider": "no",
     "websocket": false,
@@ -20,7 +20,7 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "YzM4ODIzMmQxOTlkZGUzNjI0Y2U0MWI2MGJmZThlNDg5NTMxYjY1OTNiZjMzOGI0OGJjYWUzNjM0Zjg1ZGM0ZDU4ZjUwYzVhNDBmZjljYTNhZDUwNjlhMWRhYTJmMzhkMzRlMTU3NWQ1MGExZTFiOTk1NzQzZGM4MmI4ODcxYzU=",
+    "jwtSecretKey": "OTJlYjczMmQ5MTJiZGRiYjc4YjEwZWRlODUyMTFlN2RhMDkzYTM0ZDc5ZmI2ZmJkODUwYjUxNzRjNzkzMTgwYmY5YzZhY2ViZTU4NjdjM2E1MDQ2NjM4NmE5MTA2MmYxNTEyMTZlOGVjMjY2YTYzNzA1Y2ZlNWZmZTJiODY3YTc=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
