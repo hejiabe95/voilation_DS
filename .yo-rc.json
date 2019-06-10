@@ -8,7 +8,7 @@
     "baseName": "invitations",
     "packageName": "com.intf.inv",
     "packageFolder": "com/intf/inv",
-    "serverPort": "8088",
+    "serverPort": "8081",
     "authenticationType": "jwt",
     "cacheProvider": "no",
     "websocket": false,
@@ -20,8 +20,11 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "OTJlYjczMmQ5MTJiZGRiYjc4YjEwZWRlODUyMTFlN2RhMDkzYTM0ZDc5ZmI2ZmJkODUwYjUxNzRjNzkzMTgwYmY5YzZhY2ViZTU4NjdjM2E1MDQ2NjM4NmE5MTA2MmYxNTEyMTZlOGVjMjY2YTYzNzA1Y2ZlNWZmZTJiODY3YTc=",
-    "testFrameworks": [],
+    "jwtSecretKey": "NmI1YjU3M2JkNmE1ZWYxOTYxMzU2MWI0MWJmMmI0ODYyNDE5YjU1ZDMyMTEyZWJjMmY4ZjhjNzcxODQ4ZmZjMDk5NjNlYWRiZWI3NzE0MTUyYzk1NWViM2IzYzk0NThjNTYxMmRlMWZiNDMxMzk4Njk3YjlkMGNiY2ZhZGIxYjE=",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
