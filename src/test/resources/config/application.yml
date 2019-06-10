@@ -13,6 +13,12 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+    client:
+        enabled: false
+    instance:
+        appname: invitations
+        instanceId: invitations:${spring.application.instance-id:${random.value}}
 
 spring:
     application:
@@ -78,14 +84,11 @@ jhipster:
             host: localhost
             port: 5000
             queue-size: 512
-    mail:
-        from: test@localhost
-        base-url: http://127.0.0.1:8080
     security:
         authentication:
             jwt:
                 # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-                base64-secret: MWVhYjIyNGJjNDc3N2EzYjEyMTk0MzQyYzc4YTUzNDg5ZjdhZjlkMDYzNGQ0ZThjM2U1OWVjYzAxNjNjYTlmMjViZGViNTg2YjhmMjZmNjU3MTk5YzY5ZDBlNGJmNTRmZDk1ZjJhZGI2MDcwOGIxOTA0ZDk0NGI1YzgxOWI1ZDk=
+                base64-secret: YzM4ODIzMmQxOTlkZGUzNjI0Y2U0MWI2MGJmZThlNDg5NTMxYjY1OTNiZjMzOGI0OGJjYWUzNjM0Zjg1ZGM0ZDU4ZjUwYzVhNDBmZjljYTNhZDUwNjlhMWRhYTJmMzhkMzRlMTU3NWQ1MGExZTFiOTk1NzQzZGM4MmI4ODcxYzU=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics:

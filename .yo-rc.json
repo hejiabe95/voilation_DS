@@ -1,34 +1,34 @@
 {
-    "generator-jhipster": {
-        "promptValues": {
-            "packageName": "invitations"
-        },
-        "jhipsterVersion": "5.8.1",
-        "applicationType": "monolith",
-        "baseName": "invitations",
-        "packageName": "invitations",
-        "packageFolder": "invitations",
-        "serverPort": "8080",
-        "authenticationType": "jwt",
-        "cacheProvider": "no",
-        "websocket": false,
-        "databaseType": "sql",
-        "devDatabaseType": "oracle",
-        "prodDatabaseType": "oracle",
-        "searchEngine": false,
-        "messageBroker": false,
-        "serviceDiscoveryType": false,
-        "buildTool": "maven",
-        "enableSwaggerCodegen": false,
-        "jwtSecretKey": "MWVhYjIyNGJjNDc3N2EzYjEyMTk0MzQyYzc4YTUzNDg5ZjdhZjlkMDYzNGQ0ZThjM2U1OWVjYzAxNjNjYTlmMjViZGViNTg2YjhmMjZmNjU3MTk5YzY5ZDBlNGJmNTRmZDk1ZjJhZGI2MDcwOGIxOTA0ZDk0NGI1YzgxOWI1ZDk=",
-        "clientFramework": "angularX",
-        "useSass": false,
-        "clientPackageManager": "npm",
-        "testFrameworks": [],
-        "jhiPrefix": "jhi",
-        "entitySuffix": "",
-        "dtoSuffix": "DTO",
-        "otherModules": [],
-        "enableTranslation": false
-    }
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.intf.invitations"
+    },
+    "jhipsterVersion": "5.8.1",
+    "applicationType": "microservice",
+    "baseName": "invitations",
+    "packageName": "com.intf.invitations",
+    "packageFolder": "com/intf/invitations",
+    "serverPort": "8085",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "oracle",
+    "prodDatabaseType": "oracle",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YzM4ODIzMmQxOTlkZGUzNjI0Y2U0MWI2MGJmZThlNDg5NTMxYjY1OTNiZjMzOGI0OGJjYWUzNjM0Zjg1ZGM0ZDU4ZjUwYzVhNDBmZjljYTNhZDUwNjlhMWRhYTJmMzhkMzRlMTU3NWQ1MGExZTFiOTk1NzQzZGM4MmI4ODcxYzU=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
 }
