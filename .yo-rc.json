@@ -15,12 +15,12 @@
     "databaseType": "sql",
     "devDatabaseType": "oracle",
     "prodDatabaseType": "oracle",
-    "searchEngine": false,
-    "messageBroker": false,
+    "searchEngine": "elasticsearch",
+    "messageBroker": "kafka",
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
-    "enableSwaggerCodegen": false,
-    "jwtSecretKey": "NmI1YjU3M2JkNmE1ZWYxOTYxMzU2MWI0MWJmMmI0ODYyNDE5YjU1ZDMyMTEyZWJjMmY4ZjhjNzcxODQ4ZmZjMDk5NjNlYWRiZWI3NzE0MTUyYzk1NWViM2IzYzk0NThjNTYxMmRlMWZiNDMxMzk4Njk3YjlkMGNiY2ZhZGIxYjE=",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "YmE1Y2U4YjEwNjFhYWQ1ZWZjNTYxYzQ4MWYxOGNhZjc3OGQ4YjhjOWVmYzY2NDhiM2Q5ZGZjODM1Nzk1ZjE2YzM1ZjBhZDIwZDRkZTRmYTM1MzAwNGZhOGVlNWNiNTUzOWU2ZDRmZGFhZTQ0NTQ2YmM3ZWZkZWEwZmU2MjE1M2Q=",
     "testFrameworks": [
       "gatling",
       "cucumber"

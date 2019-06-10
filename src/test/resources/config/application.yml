@@ -23,6 +23,15 @@ eureka:
 spring:
     application:
         name: invitations
+    cloud:
+        stream:
+            kafka:
+                binder:
+                    brokers: localhost
+                    zk-nodes: localhost
+            bindings:
+                output:
+                    destination: topic-jhipster
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:h2:mem:invitations;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
@@ -49,6 +58,11 @@ spring:
             hibernate.generate_statistics: false
             hibernate.hbm2ddl.auto: validate
             hibernate.jdbc.time_zone: UTC
+    data:
+        elasticsearch:
+            properties:
+                path:
+                    home: target/elasticsearch
     liquibase:
         contexts: test
     mail:
@@ -88,7 +102,7 @@ jhipster:
         authentication:
             jwt:
                 # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-                base64-secret: NmI1YjU3M2JkNmE1ZWYxOTYxMzU2MWI0MWJmMmI0ODYyNDE5YjU1ZDMyMTEyZWJjMmY4ZjhjNzcxODQ4ZmZjMDk5NjNlYWRiZWI3NzE0MTUyYzk1NWViM2IzYzk0NThjNTYxMmRlMWZiNDMxMzk4Njk3YjlkMGNiY2ZhZGIxYjE=
+                base64-secret: YmE1Y2U4YjEwNjFhYWQ1ZWZjNTYxYzQ4MWYxOGNhZjc3OGQ4YjhjOWVmYzY2NDhiM2Q5ZGZjODM1Nzk1ZjE2YzM1ZjBhZDIwZDRkZTRmYTM1MzAwNGZhOGVlNWNiNTUzOWU2ZDRmZGFhZTQ0NTQ2YmM3ZWZkZWEwZmU2MjE1M2Q=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics:
