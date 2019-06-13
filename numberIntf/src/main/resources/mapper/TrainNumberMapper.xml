@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.TrainNumberMapper">
+ 
+<insert id="batchInsert" parameterType="java.util.ArrayList">
+       <![CDATA[
+		insert all 
+		]]>
+<foreach collection="list" item="item" index="index"> 
+			<![CDATA[ 
+        into pcs_train_number_violation (
+		fileid,
+		filepath,
+		"number",
+		departuretime,
+		departuretimems,
+		trainnum,
+		trainid,
+		drivername,
+		vicedrivername,
+		roadid,
+		total,
+		"length",
+		departurestation,
+		passengerfreight,
+		traintype,
+		violationnum,
+		deductmarks,
+		score,
+		thisit,
+		violationremark,
+		modeid,
+		modename,
+		teamid,
+		teamname) VALUES
+		(
+		 #{item.fileId,jdbcType=INTEGER}
+		,#{item.filePath,jdbcType=VARCHAR}
+		,#{item.number,jdbcType=INTEGER}
+		,#{item.departureTime,jdbcType=TIMESTAMP}
+		,#{item.departureTimems,jdbcType=VARCHAR}
+		,#{item.trainNum,jdbcType=INTEGER}
+		,#{item.trainId,jdbcType=INTEGER}
+		,#{item.driverName,jdbcType=VARCHAR}
+		,#{item.viceDriverName,jdbcType=VARCHAR}
+		,#{item.roadId,jdbcType=INTEGER}
+		,#{item.total,jdbcType=INTEGER}
+		,#{item.length,jdbcType=INTEGER}
+		,#{item.departureStation,jdbcType=VARCHAR}
+		,#{item.passengerFreight,jdbcType=VARCHAR}
+		,#{item.trainType,jdbcType=VARCHAR}
+		,#{item.violationNum,jdbcType=INTEGER}
+		,#{item.deductMarks,jdbcType=INTEGER}
+		,#{item.score,jdbcType=INTEGER}
+		,#{item.thisIt,jdbcType=VARCHAR}
+	    ,#{item.violationRemark,jdbcType=VARCHAR}
+	    ,#{item.modeID,jdbcType=VARCHAR}
+	    ,#{item.modeName,jdbcType=VARCHAR}
+	    ,#{item.teamID,jdbcType=VARCHAR}
+		,#{item.teamName,jdbcType=VARCHAR}
+                                  
+	   )
+		]]>
+		</foreach>
+		<![CDATA[
+		select * from dual
+		]]>
+
+</insert>
+
+</mapper>
+
+
+ 
