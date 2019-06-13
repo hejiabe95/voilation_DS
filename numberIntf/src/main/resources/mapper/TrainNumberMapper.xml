@@ -11,7 +11,7 @@
         into pcs_train_number_violation (
 		fileid,
 		filepath,
-		"number",
+		"NUMBER",
 		departuretime,
 		departuretimems,
 		trainnum,
@@ -20,7 +20,7 @@
 		vicedrivername,
 		roadid,
 		total,
-		"length",
+		"LENGTH",
 		departurestation,
 		passengerfreight,
 		traintype,
@@ -34,13 +34,13 @@
 		teamid,
 		teamname) VALUES
 		(
-		 #{item.fileId,jdbcType=INTEGER}
+		 #{item.fileId,jdbcType=VARCHAR}
 		,#{item.filePath,jdbcType=VARCHAR}
 		,#{item.number,jdbcType=INTEGER}
-		,#{item.departureTime,jdbcType=TIMESTAMP}
+		,#{item.departureTime,jdbcType=VARCHAR}
 		,#{item.departureTimems,jdbcType=VARCHAR}
 		,#{item.trainNum,jdbcType=INTEGER}
-		,#{item.trainId,jdbcType=INTEGER}
+		,#{item.trainId,jdbcType=VARCHAR}
 		,#{item.driverName,jdbcType=VARCHAR}
 		,#{item.viceDriverName,jdbcType=VARCHAR}
 		,#{item.roadId,jdbcType=INTEGER}
@@ -67,6 +67,11 @@
 		]]>
 
 </insert>
+
+	<select id="quertyByFileId" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+	   select count(*) from PCS_TRAIN_NUMBER_VIOLATION where fileId = #{fileId}
+	</select>
 
 </mapper>
 

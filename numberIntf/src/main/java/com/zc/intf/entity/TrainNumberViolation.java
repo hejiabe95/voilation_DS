@@ -3,13 +3,13 @@ package com.zc.intf.entity;
 import java.util.Date;
 
 public class TrainNumberViolation {
-   public int fileId;
+   public String fileId;
    public String filePath;
    public int number;
-   public Date departureTime;
+   public String departureTime;
    public String departureTimems;
    public int trainNum;
-   public int trainId;
+   public String trainId;
    public String driverName;
    public String viceDriverName;
    public int roadId;
@@ -27,10 +27,11 @@ public class TrainNumberViolation {
    public String modeName;
    public String teamID;
    public String teamName;
-	public int getFileId() {
+	   
+	public String getFileId() {
 		return fileId;
 	}
-	public void setFileId(int fileId) {
+	public void setFileId(String fileId) {
 		this.fileId = fileId;
 	}
 	public String getFilePath() {
@@ -45,10 +46,10 @@ public class TrainNumberViolation {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public Date getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
-	public void setDepartureTime(Date departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 	public String getDepartureTimems() {
@@ -63,10 +64,10 @@ public class TrainNumberViolation {
 	public void setTrainNum(int trainNum) {
 		this.trainNum = trainNum;
 	}
-	public int getTrainId() {
+	public String getTrainId() {
 		return trainId;
 	}
-	public void setTrainId(int trainId) {
+	public void setTrainId(String trainId) {
 		this.trainId = trainId;
 	}
 	public String getDriverName() {
@@ -171,10 +172,9 @@ public class TrainNumberViolation {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	   
-	   
-   
- 
+	 
+		 
+	 
    
    
    

@@ -19,4 +19,9 @@ public class TrainNumberService {
 	public void batchInsert(List<TrainNumberViolation> trainNumberViolationList){
 		trainNumberMapper.batchInsert(trainNumberViolationList);
 	}
+	
+	public int quertyByFileId(String fileId)
+	{
+		return trainNumberMapper.quertyByFileId(fileId);
+	}
 }
