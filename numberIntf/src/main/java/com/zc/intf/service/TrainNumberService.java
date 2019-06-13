@@ -24,4 +24,9 @@ public class TrainNumberService {
 	{
 		return trainNumberMapper.quertyByFileId(fileId);
 	}
+	
+	public String quertyNewTime()
+	{
+		return trainNumberMapper.quertyNewTime();
+	}
 }

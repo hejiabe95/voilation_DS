@@ -72,6 +72,13 @@
 		resultType="java.lang.Integer">
 	   select count(*) from PCS_TRAIN_NUMBER_VIOLATION where fileId = #{fileId}
 	</select>
+	
+	<select id="quertyNewTime"  resultType="java.lang.String">
+	   select * from (select departuretime from PCS_TRAIN_NUMBER_VIOLATION order by departuretime desc) where rownum=1
+	</select>
+	
+	
+	
 
 </mapper>
 

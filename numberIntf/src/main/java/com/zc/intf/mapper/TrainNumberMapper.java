@@ -10,6 +10,8 @@ public interface TrainNumberMapper {
     int batchInsert(List<TrainNumberViolation> trainNumberViolationList);
     
     int quertyByFileId(String fileId);
+    
+    String quertyNewTime();
 
      
 }
