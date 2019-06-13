@@ -41,16 +41,17 @@ public class TrainTask {
     	//通过开始时间，结束时间来查询信息
     	//获取当前日期，作为结束时间
     	//获取单签时间减去一个小时作为开始时间
-    	String lodNewTime = trainNumberService.quertyNewTime();//获取之前同步的最后时间作为开始时间
+    	
     	String url = "";
-    	if (null != lodNewTime && !"".equals(lodNewTime))
-    	{
-    		 url = "http://27.128.164.147:9600/WebExternal/getFileBeanByParam.do?teamID&modeID&startTime="+lodNewTime+"&endTime="+getTime()+"&trainNum&trainID&start&length";
-    	}
-    	else
-    	{
+//    	String lodNewTime = trainNumberService.quertyNewTime();//获取之前同步的最后时间作为开始时间
+//    	if (null != lodNewTime && !"".equals(lodNewTime))
+//    	{
+//    		 url = "http://27.128.164.147:9600/WebExternal/getFileBeanByParam.do?teamID&modeID&startTime="+lodNewTime+"&endTime="+getTime()+"&trainNum&trainID&start&length";
+//    	}
+//    	else
+//    	{
     	     url = "http://27.128.164.147:9600/WebExternal/getFileBeanByParam.do?teamID&modeID&startTime="+getTimejianyi()+"&endTime="+getTime()+"&trainNum&trainID&start&length";
-    	}
+//    	}
     	url=url.replaceAll(" ", "%20");//时间有空格需要转义
     	String allinfo = CoreHttpUtils.post(url, null);//调用接口
         if (null  == allinfo)//如果没有返回就不处理了
