@@ -49,12 +49,13 @@
 		</dependency>
 		
 		  <!--orcale数据库依赖-->
-  <dependency>
-      <groupId>com.oracle.jdbc</groupId>
-      <artifactId>ojdbc8</artifactId>
-      <version>18.3.0.0</version>
-    </dependency>
-  <!--mybatis依赖-->
+		<dependency>
+			<groupId>com.oracle.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>18.3.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/ojdbc8-18.3.0.0.jar</systemPath>
+		</dependency>
 
 		<dependency>
             <groupId>net.sf.barcode4j</groupId>
