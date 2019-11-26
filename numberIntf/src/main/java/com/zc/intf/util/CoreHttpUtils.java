@@ -41,7 +41,7 @@ public class CoreHttpUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(CoreHttpUtils.class);
 
-	public static final int DEFAULT_TIMEOUT = 5000;
+	public static final int DEFAULT_TIMEOUT = 12000;
 
 	public static String get(String requestUrl, Object body)  {
 		try {
@@ -147,6 +147,10 @@ public class CoreHttpUtils {
 
 	public static String callHttp(String requestUrl, Map<String, String> headerMap, Object body, String contentTypeString, String encoding, int timeout,
 			String method) throws IOException {
+
+		//时间有空格需要转义
+		requestUrl=requestUrl.replaceAll(" ", "%20");
+
 		Authenticator.setDefault(new MyAuthenticator());
 		String result = null;
 		BufferedReader bufferedReader = null;

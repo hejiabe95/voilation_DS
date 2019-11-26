@@ -1,0 +1,54 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'voilationDS'
+version = '0.0.1-SNAPSHOT'
+
+description = """"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven { url "https://repo.spring.io/libs-milestone" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    // more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc
+}
+dependencies {
+    compile files('libs/ojdbc8-18.3.0.0.jar')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+    compile group: 'net.sf.barcode4j', name: 'barcode4j-light', version: '2.0'
+    compile group: 'org.json', name: 'json', version: '20160810'
+    compile group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '1.5.9.RELEASE'
+    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2.1-b03'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.37'
+    compile group: 'com.aliyun', name: 'aliyun-java-sdk-core', version: '3.3.1'
+    compile group: 'com.github.1991wangliang', name: 'aliyun-java-sdk-dysmsapi', version: '1.0.0'
+    compile group: 'com.aliyun.oss', name: 'aliyun-sdk-oss', version: '2.5.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.1.6'
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'com.baomidou', name: 'mybatisplus-spring-boot-starter', version: '1.0.4'
+    compile group: 'com.baomidou', name: 'mybatis-plus', version: '2.1.1'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.2.1'
+    compile group: 'org.quartz-scheduler', name: 'quartz-jobs', version: '2.2.1'
+    compile group: 'com.github.penggle', name: 'kaptcha', version: '2.3.2'
+    compile group: 'com.google.zxing', name: 'core', version: '3.3.0'
+    compile group: 'com.google.zxing', name: 'javase', version: '3.3.0'
+    runtime group: 'mysql', name: 'mysql-connector-java', version: '5.1.44'
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+}
