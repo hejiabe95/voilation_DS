@@ -58,7 +58,7 @@ public class TrainTask {
 
         //如果非第一次同步就就用老数据的最晚时间
         if (null != lodNewTime && !"".equals(lodNewTime)) {
-            url = getUrlTrainNumberViolaion("2019-08-26 00:00:00", getTime(), 0);
+            url = getUrlTrainNumberViolaion(lodNewTime, getTime(), 0);
         } else {
             //第一次同步就用当前时间减一个小时
             url = getUrlTrainNumberViolaion(getTimejianyi(), getTime(), 0);
@@ -88,7 +88,7 @@ public class TrainTask {
                 List<TrainNumberViolation> list = new ArrayList<TrainNumberViolation>();
                 String url1 = "";
                 if (null != lodNewTime && !"".equals(lodNewTime)) {
-                    url1 = getUrlTrainNumberViolaion("2019-08-26 00:00:00", getTime(), i);
+                    url1 = getUrlTrainNumberViolaion(lodNewTime, getTime(), i);
                 } else {
                     url1 = getUrlTrainNumberViolaion(getTimejianyi(), getTime(), i);
                 }
