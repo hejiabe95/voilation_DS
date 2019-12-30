@@ -3,7 +3,7 @@
 ### Example user template
 
 # IntelliJ project files
-/.idea
+/.idea/*
 *.iml
 out
 gen
@@ -128,8 +128,6 @@ typings/
 .mtj.tmp/
 
 # Package Files #
-*.jar
-*.war
 *.nar
 *.ear
 *.zip
