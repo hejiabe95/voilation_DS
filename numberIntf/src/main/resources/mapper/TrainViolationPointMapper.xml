@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.TrainViolationPointMapper">
+  <resultMap id="BaseResultMap" type="com.zc.intf.entity.TrainViolationPoint">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CODE" jdbcType="NUMERIC" property="code" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+    <result column="STARTTIME" jdbcType="VARCHAR" property="starttime" />
+    <result column="ENDTIME" jdbcType="VARCHAR" property="endtime" />
+    <result column="GLB" jdbcType="NUMERIC" property="glb" />
+    <result column="SPEED" jdbcType="NUMERIC" property="speed" />
+    <result column="TUBEPRESSURE" jdbcType="NUMERIC" property="tubepressure" />
+    <result column="TRACTION" jdbcType="NUMERIC" property="traction" />
+    <result column="WORKINGCONDITION" jdbcType="VARCHAR" property="workingcondition" />
+    <result column="LIMITSPEED" jdbcType="NUMERIC" property="limitspeed" />
+    <result column="SIGNALSTATE" jdbcType="VARCHAR" property="signalstate" />
+    <result column="SIGNALTYPE" jdbcType="VARCHAR" property="signaltype" />
+    <result column="TOTALPRESSURE" jdbcType="NUMERIC" property="totalpressure" />
+    <result column="AVERAGEPRESSURE" jdbcType="NUMERIC" property="averagepressure" />
+    <result column="BRAKEPRESSURE" jdbcType="NUMERIC" property="brakepressure" />
+    <result column="ADVICE" jdbcType="VARCHAR" property="advice" />
+    <result column="FILEID" jdbcType="VARCHAR" property="fileid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CODE, NOTE, STARTTIME, ENDTIME, GLB, SPEED, TUBEPRESSURE, TRACTION, WORKINGCONDITION, 
+    LIMITSPEED, SIGNALSTATE, SIGNALTYPE, TOTALPRESSURE, AVERAGEPRESSURE, BRAKEPRESSURE, 
+    ADVICE, FILEID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PCS_TRAIN_VIOLATION_POINT_DATA
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PCS_TRAIN_VIOLATION_POINT_DATA
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zc.intf.entity.TrainViolationPoint">
+    insert into PCS_TRAIN_VIOLATION_POINT_DATA (ID, CODE, NOTE, 
+      STARTTIME, ENDTIME, GLB, 
+      SPEED, TUBEPRESSURE, TRACTION, 
+      WORKINGCONDITION, LIMITSPEED, SIGNALSTATE, 
+      SIGNALTYPE, TOTALPRESSURE, AVERAGEPRESSURE, 
+      BRAKEPRESSURE, ADVICE, FILEID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=NUMERIC}, #{note,jdbcType=VARCHAR}, 
+      #{starttime,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR}, #{glb,jdbcType=NUMERIC}, 
+      #{speed,jdbcType=NUMERIC}, #{tubepressure,jdbcType=NUMERIC}, #{traction,jdbcType=NUMERIC}, 
+      #{workingcondition,jdbcType=VARCHAR}, #{limitspeed,jdbcType=NUMERIC}, #{signalstate,jdbcType=VARCHAR}, 
+      #{signaltype,jdbcType=VARCHAR}, #{totalpressure,jdbcType=NUMERIC}, #{averagepressure,jdbcType=NUMERIC}, 
+      #{brakepressure,jdbcType=NUMERIC}, #{advice,jdbcType=VARCHAR}, #{fileid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zc.intf.entity.TrainViolationPoint">
+    insert into PCS_TRAIN_VIOLATION_POINT_DATA
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="note != null">
+        NOTE,
+      </if>
+      <if test="starttime != null">
+        STARTTIME,
+      </if>
+      <if test="endtime != null">
+        ENDTIME,
+      </if>
+      <if test="glb != null">
+        GLB,
+      </if>
+      <if test="speed != null">
+        SPEED,
+      </if>
+      <if test="tubepressure != null">
+        TUBEPRESSURE,
+      </if>
+      <if test="traction != null">
+        TRACTION,
+      </if>
+      <if test="workingcondition != null">
+        WORKINGCONDITION,
+      </if>
+      <if test="limitspeed != null">
+        LIMITSPEED,
+      </if>
+      <if test="signalstate != null">
+        SIGNALSTATE,
+      </if>
+      <if test="signaltype != null">
+        SIGNALTYPE,
+      </if>
+      <if test="totalpressure != null">
+        TOTALPRESSURE,
+      </if>
+      <if test="averagepressure != null">
+        AVERAGEPRESSURE,
+      </if>
+      <if test="brakepressure != null">
+        BRAKEPRESSURE,
+      </if>
+      <if test="advice != null">
+        ADVICE,
+      </if>
+      <if test="fileid != null">
+        FILEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=NUMERIC},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="glb != null">
+        #{glb,jdbcType=NUMERIC},
+      </if>
+      <if test="speed != null">
+        #{speed,jdbcType=NUMERIC},
+      </if>
+      <if test="tubepressure != null">
+        #{tubepressure,jdbcType=NUMERIC},
+      </if>
+      <if test="traction != null">
+        #{traction,jdbcType=NUMERIC},
+      </if>
+      <if test="workingcondition != null">
+        #{workingcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="limitspeed != null">
+        #{limitspeed,jdbcType=NUMERIC},
+      </if>
+      <if test="signalstate != null">
+        #{signalstate,jdbcType=VARCHAR},
+      </if>
+      <if test="signaltype != null">
+        #{signaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="totalpressure != null">
+        #{totalpressure,jdbcType=NUMERIC},
+      </if>
+      <if test="averagepressure != null">
+        #{averagepressure,jdbcType=NUMERIC},
+      </if>
+      <if test="brakepressure != null">
+        #{brakepressure,jdbcType=NUMERIC},
+      </if>
+      <if test="advice != null">
+        #{advice,jdbcType=VARCHAR},
+      </if>
+      <if test="fileid != null">
+        #{fileid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zc.intf.entity.TrainViolationPoint">
+    update PCS_TRAIN_VIOLATION_POINT_DATA
+    <set>
+      <if test="code != null">
+        CODE = #{code,jdbcType=NUMERIC},
+      </if>
+      <if test="note != null">
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        STARTTIME = #{starttime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null">
+        ENDTIME = #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="glb != null">
+        GLB = #{glb,jdbcType=NUMERIC},
+      </if>
+      <if test="speed != null">
+        SPEED = #{speed,jdbcType=NUMERIC},
+      </if>
+      <if test="tubepressure != null">
+        TUBEPRESSURE = #{tubepressure,jdbcType=NUMERIC},
+      </if>
+      <if test="traction != null">
+        TRACTION = #{traction,jdbcType=NUMERIC},
+      </if>
+      <if test="workingcondition != null">
+        WORKINGCONDITION = #{workingcondition,jdbcType=VARCHAR},
+      </if>
+      <if test="limitspeed != null">
+        LIMITSPEED = #{limitspeed,jdbcType=NUMERIC},
+      </if>
+      <if test="signalstate != null">
+        SIGNALSTATE = #{signalstate,jdbcType=VARCHAR},
+      </if>
+      <if test="signaltype != null">
+        SIGNALTYPE = #{signaltype,jdbcType=VARCHAR},
+      </if>
+      <if test="totalpressure != null">
+        TOTALPRESSURE = #{totalpressure,jdbcType=NUMERIC},
+      </if>
+      <if test="averagepressure != null">
+        AVERAGEPRESSURE = #{averagepressure,jdbcType=NUMERIC},
+      </if>
+      <if test="brakepressure != null">
+        BRAKEPRESSURE = #{brakepressure,jdbcType=NUMERIC},
+      </if>
+      <if test="advice != null">
+        ADVICE = #{advice,jdbcType=VARCHAR},
+      </if>
+      <if test="fileid != null">
+        FILEID = #{fileid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zc.intf.entity.TrainViolationPoint">
+    update PCS_TRAIN_VIOLATION_POINT_DATA
+    set CODE = #{code,jdbcType=NUMERIC},
+      NOTE = #{note,jdbcType=VARCHAR},
+      STARTTIME = #{starttime,jdbcType=VARCHAR},
+      ENDTIME = #{endtime,jdbcType=VARCHAR},
+      GLB = #{glb,jdbcType=NUMERIC},
+      SPEED = #{speed,jdbcType=NUMERIC},
+      TUBEPRESSURE = #{tubepressure,jdbcType=NUMERIC},
+      TRACTION = #{traction,jdbcType=NUMERIC},
+      WORKINGCONDITION = #{workingcondition,jdbcType=VARCHAR},
+      LIMITSPEED = #{limitspeed,jdbcType=NUMERIC},
+      SIGNALSTATE = #{signalstate,jdbcType=VARCHAR},
+      SIGNALTYPE = #{signaltype,jdbcType=VARCHAR},
+      TOTALPRESSURE = #{totalpressure,jdbcType=NUMERIC},
+      AVERAGEPRESSURE = #{averagepressure,jdbcType=NUMERIC},
+      BRAKEPRESSURE = #{brakepressure,jdbcType=NUMERIC},
+      ADVICE = #{advice,jdbcType=VARCHAR},
+      FILEID = #{fileid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="queryNewTime"  resultType="java.lang.String">
+    select * from (select STARTTIME from PCS_TRAIN_VIOLATION_POINT_DATA order by STARTTIME desc) where rownum=1
+  </select>
+
+</mapper>

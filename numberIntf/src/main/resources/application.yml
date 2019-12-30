@@ -1,0 +1,31 @@
+logging:
+  level:
+    com:
+      zc:
+        intf: DEBUG
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+  global-config:
+    db-column-underline: true
+    field-strategy: 2
+    id-type: 0
+    refresh-mapper: true
+  mapper-locations: classpath:/mapper/*Mapper.xml
+server:
+  port: 24000
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@//36.111.184.159:1521/orcl
+    username: kettle
+    password: kettle1234
+  jpa:
+    database: oracle
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    mode: 'HTML5  '
+    prefix: classpath:/templates/
+    suffix: .html

@@ -1,6 +1,8 @@
 package com.zc.intf.entity;
 
-public class BasicTrainTeam {
+import java.io.Serializable;
+
+public class BasicTrainTeam implements Serializable {
    public int number; 
    public int id;
    public String teamName;

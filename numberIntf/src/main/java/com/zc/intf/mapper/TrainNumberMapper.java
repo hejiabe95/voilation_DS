@@ -11,7 +11,7 @@ public interface TrainNumberMapper {
     
     int quertyByFileId(String fileId);
     
-    String quertyNewTime();
+    String queryNewTime();
 
      
 }

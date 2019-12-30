@@ -1,8 +1,9 @@
 package com.zc.intf.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TrainNumberViolation {
+public class TrainNumberViolation implements Serializable {
    public String fileId;
    public String filePath;
    public int number;

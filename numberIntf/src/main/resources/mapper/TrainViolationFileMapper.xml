@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.TrainViolationFileMapper">
+  <resultMap id="BaseResultMap" type="com.zc.intf.entity.TrainViolationFile">
+    <id column="FILEID" jdbcType="VARCHAR" property="fileid" />
+    <result column="JIAOLUHAO" jdbcType="NUMERIC" property="jiaoluhao" />
+    <result column="LOCOTYPE" jdbcType="VARCHAR" property="locotype" />
+    <result column="LOCOTEAMID" jdbcType="NUMERIC" property="locoteamid" />
+    <result column="LOCOTEAMNAME" jdbcType="VARCHAR" property="locoteamname" />
+    <result column="LOCONUMBER" jdbcType="VARCHAR" property="loconumber" />
+    <result column="TRAINNUMBER" jdbcType="NUMERIC" property="trainnumber" />
+    <result column="DRIVERTEAMID" jdbcType="NUMERIC" property="driverteamid" />
+    <result column="DRIVERTEAMNAME" jdbcType="VARCHAR" property="driverteamname" />
+    <result column="DRIVERJOBNUMBER" jdbcType="NUMERIC" property="driverjobnumber" />
+    <result column="DRIVERNAME" jdbcType="VARCHAR" property="drivername" />
+    <result column="VICEDRIVERJOBNUMBER" jdbcType="NUMERIC" property="vicedriverjobnumber" />
+    <result column="VICEDRIVERNAME" jdbcType="VARCHAR" property="vicedrivername" />
+    <result column="TOTALWEIGHT" jdbcType="NUMERIC" property="totalweight" />
+    <result column="LENGTH" jdbcType="NUMERIC" property="length" />
+    <result column="VEHICLENUMBER" jdbcType="NUMERIC" property="vehiclenumber" />
+    <result column="KEHUO" jdbcType="VARCHAR" property="kehuo" />
+    <result column="BENBU" jdbcType="VARCHAR" property="benbu" />
+    <result column="DEPARTURETIME" jdbcType="VARCHAR" property="departuretime" />
+    <result column="DEPARTURESTATION" jdbcType="VARCHAR" property="departurestation" />
+    <result column="VIOLATIONNUMBER" jdbcType="NUMERIC" property="violationnumber" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+    <result column="DEDUCTMARKS" jdbcType="NUMERIC" property="deductmarks" />
+    <result column="VIOLATIONREMARK" jdbcType="VARCHAR" property="violationremark" />
+    <result column="MODEID" jdbcType="NUMERIC" property="modeid" />
+    <result column="ANALYSISSTATE" jdbcType="NUMERIC" property="analysisstate" />
+    <result column="ANALYSISTIME" jdbcType="VARCHAR" property="analysistime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FILEID, JIAOLUHAO, LOCOTYPE, LOCOTEAMID, LOCOTEAMNAME, LOCONUMBER, TRAINNUMBER, DRIVERTEAMID, 
+    DRIVERTEAMNAME, DRIVERJOBNUMBER, DRIVERNAME, VICEDRIVERJOBNUMBER, VICEDRIVERNAME, 
+    TOTALWEIGHT, LENGTH, VEHICLENUMBER, KEHUO, BENBU, DEPARTURETIME, DEPARTURESTATION, 
+    VIOLATIONNUMBER, SCORE, DEDUCTMARKS, VIOLATIONREMARK, MODEID, ANALYSISSTATE, ANALYSISTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PCS_TRAIN_VIOLATION_FILE
+    where FILEID = #{fileid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from PCS_TRAIN_VIOLATION_FILE
+    where FILEID = #{fileid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zc.intf.entity.TrainViolationFile">
+    insert into PCS_TRAIN_VIOLATION_FILE (FILEID, JIAOLUHAO, LOCOTYPE, 
+      LOCOTEAMID, LOCOTEAMNAME, LOCONUMBER, 
+      TRAINNUMBER, DRIVERTEAMID, DRIVERTEAMNAME, 
+      DRIVERJOBNUMBER, DRIVERNAME, VICEDRIVERJOBNUMBER, 
+      VICEDRIVERNAME, TOTALWEIGHT, LENGTH, 
+      VEHICLENUMBER, KEHUO, BENBU, 
+      DEPARTURETIME, DEPARTURESTATION, VIOLATIONNUMBER, 
+      SCORE, DEDUCTMARKS, VIOLATIONREMARK, 
+      MODEID, ANALYSISSTATE, ANALYSISTIME
+      )
+    values (#{fileid,jdbcType=VARCHAR}, #{jiaoluhao,jdbcType=NUMERIC}, #{locotype,jdbcType=VARCHAR}, 
+      #{locoteamid,jdbcType=NUMERIC}, #{locoteamname,jdbcType=VARCHAR}, #{loconumber,jdbcType=VARCHAR}, 
+      #{trainnumber,jdbcType=NUMERIC}, #{driverteamid,jdbcType=NUMERIC}, #{driverteamname,jdbcType=VARCHAR}, 
+      #{driverjobnumber,jdbcType=NUMERIC}, #{drivername,jdbcType=VARCHAR}, #{vicedriverjobnumber,jdbcType=NUMERIC}, 
+      #{vicedrivername,jdbcType=VARCHAR}, #{totalweight,jdbcType=NUMERIC}, #{length,jdbcType=NUMERIC}, 
+      #{vehiclenumber,jdbcType=NUMERIC}, #{kehuo,jdbcType=VARCHAR}, #{benbu,jdbcType=VARCHAR}, 
+      #{departuretime,jdbcType=VARCHAR}, #{departurestation,jdbcType=VARCHAR}, #{violationnumber,jdbcType=NUMERIC}, 
+      #{score,jdbcType=NUMERIC}, #{deductmarks,jdbcType=NUMERIC}, #{violationremark,jdbcType=VARCHAR}, 
+      #{modeid,jdbcType=NUMERIC}, #{analysisstate,jdbcType=NUMERIC}, #{analysistime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zc.intf.entity.TrainViolationFile">
+    insert into PCS_TRAIN_VIOLATION_FILE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fileid != null">
+        FILEID,
+      </if>
+      <if test="jiaoluhao != null">
+        JIAOLUHAO,
+      </if>
+      <if test="locotype != null">
+        LOCOTYPE,
+      </if>
+      <if test="locoteamid != null">
+        LOCOTEAMID,
+      </if>
+      <if test="locoteamname != null">
+        LOCOTEAMNAME,
+      </if>
+      <if test="loconumber != null">
+        LOCONUMBER,
+      </if>
+      <if test="trainnumber != null">
+        TRAINNUMBER,
+      </if>
+      <if test="driverteamid != null">
+        DRIVERTEAMID,
+      </if>
+      <if test="driverteamname != null">
+        DRIVERTEAMNAME,
+      </if>
+      <if test="driverjobnumber != null">
+        DRIVERJOBNUMBER,
+      </if>
+      <if test="drivername != null">
+        DRIVERNAME,
+      </if>
+      <if test="vicedriverjobnumber != null">
+        VICEDRIVERJOBNUMBER,
+      </if>
+      <if test="vicedrivername != null">
+        VICEDRIVERNAME,
+      </if>
+      <if test="totalweight != null">
+        TOTALWEIGHT,
+      </if>
+      <if test="length != null">
+        LENGTH,
+      </if>
+      <if test="vehiclenumber != null">
+        VEHICLENUMBER,
+      </if>
+      <if test="kehuo != null">
+        KEHUO,
+      </if>
+      <if test="benbu != null">
+        BENBU,
+      </if>
+      <if test="departuretime != null">
+        DEPARTURETIME,
+      </if>
+      <if test="departurestation != null">
+        DEPARTURESTATION,
+      </if>
+      <if test="violationnumber != null">
+        VIOLATIONNUMBER,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+      <if test="deductmarks != null">
+        DEDUCTMARKS,
+      </if>
+      <if test="violationremark != null">
+        VIOLATIONREMARK,
+      </if>
+      <if test="modeid != null">
+        MODEID,
+      </if>
+      <if test="analysisstate != null">
+        ANALYSISSTATE,
+      </if>
+      <if test="analysistime != null">
+        ANALYSISTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fileid != null">
+        #{fileid,jdbcType=VARCHAR},
+      </if>
+      <if test="jiaoluhao != null">
+        #{jiaoluhao,jdbcType=NUMERIC},
+      </if>
+      <if test="locotype != null">
+        #{locotype,jdbcType=VARCHAR},
+      </if>
+      <if test="locoteamid != null">
+        #{locoteamid,jdbcType=NUMERIC},
+      </if>
+      <if test="locoteamname != null">
+        #{locoteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="loconumber != null">
+        #{loconumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trainnumber != null">
+        #{trainnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="driverteamid != null">
+        #{driverteamid,jdbcType=NUMERIC},
+      </if>
+      <if test="driverteamname != null">
+        #{driverteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="driverjobnumber != null">
+        #{driverjobnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="drivername != null">
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="vicedriverjobnumber != null">
+        #{vicedriverjobnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="vicedrivername != null">
+        #{vicedrivername,jdbcType=VARCHAR},
+      </if>
+      <if test="totalweight != null">
+        #{totalweight,jdbcType=NUMERIC},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=NUMERIC},
+      </if>
+      <if test="vehiclenumber != null">
+        #{vehiclenumber,jdbcType=NUMERIC},
+      </if>
+      <if test="kehuo != null">
+        #{kehuo,jdbcType=VARCHAR},
+      </if>
+      <if test="benbu != null">
+        #{benbu,jdbcType=VARCHAR},
+      </if>
+      <if test="departuretime != null">
+        #{departuretime,jdbcType=VARCHAR},
+      </if>
+      <if test="departurestation != null">
+        #{departurestation,jdbcType=VARCHAR},
+      </if>
+      <if test="violationnumber != null">
+        #{violationnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC},
+      </if>
+      <if test="deductmarks != null">
+        #{deductmarks,jdbcType=NUMERIC},
+      </if>
+      <if test="violationremark != null">
+        #{violationremark,jdbcType=VARCHAR},
+      </if>
+      <if test="modeid != null">
+        #{modeid,jdbcType=NUMERIC},
+      </if>
+      <if test="analysisstate != null">
+        #{analysisstate,jdbcType=NUMERIC},
+      </if>
+      <if test="analysistime != null">
+        #{analysistime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zc.intf.entity.TrainViolationFile">
+    update PCS_TRAIN_VIOLATION_FILE
+    <set>
+      <if test="jiaoluhao != null">
+        JIAOLUHAO = #{jiaoluhao,jdbcType=NUMERIC},
+      </if>
+      <if test="locotype != null">
+        LOCOTYPE = #{locotype,jdbcType=VARCHAR},
+      </if>
+      <if test="locoteamid != null">
+        LOCOTEAMID = #{locoteamid,jdbcType=NUMERIC},
+      </if>
+      <if test="locoteamname != null">
+        LOCOTEAMNAME = #{locoteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="loconumber != null">
+        LOCONUMBER = #{loconumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trainnumber != null">
+        TRAINNUMBER = #{trainnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="driverteamid != null">
+        DRIVERTEAMID = #{driverteamid,jdbcType=NUMERIC},
+      </if>
+      <if test="driverteamname != null">
+        DRIVERTEAMNAME = #{driverteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="driverjobnumber != null">
+        DRIVERJOBNUMBER = #{driverjobnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="drivername != null">
+        DRIVERNAME = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="vicedriverjobnumber != null">
+        VICEDRIVERJOBNUMBER = #{vicedriverjobnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="vicedrivername != null">
+        VICEDRIVERNAME = #{vicedrivername,jdbcType=VARCHAR},
+      </if>
+      <if test="totalweight != null">
+        TOTALWEIGHT = #{totalweight,jdbcType=NUMERIC},
+      </if>
+      <if test="length != null">
+        LENGTH = #{length,jdbcType=NUMERIC},
+      </if>
+      <if test="vehiclenumber != null">
+        VEHICLENUMBER = #{vehiclenumber,jdbcType=NUMERIC},
+      </if>
+      <if test="kehuo != null">
+        KEHUO = #{kehuo,jdbcType=VARCHAR},
+      </if>
+      <if test="benbu != null">
+        BENBU = #{benbu,jdbcType=VARCHAR},
+      </if>
+      <if test="departuretime != null">
+        DEPARTURETIME = #{departuretime,jdbcType=VARCHAR},
+      </if>
+      <if test="departurestation != null">
+        DEPARTURESTATION = #{departurestation,jdbcType=VARCHAR},
+      </if>
+      <if test="violationnumber != null">
+        VIOLATIONNUMBER = #{violationnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=NUMERIC},
+      </if>
+      <if test="deductmarks != null">
+        DEDUCTMARKS = #{deductmarks,jdbcType=NUMERIC},
+      </if>
+      <if test="violationremark != null">
+        VIOLATIONREMARK = #{violationremark,jdbcType=VARCHAR},
+      </if>
+      <if test="modeid != null">
+        MODEID = #{modeid,jdbcType=NUMERIC},
+      </if>
+      <if test="analysisstate != null">
+        ANALYSISSTATE = #{analysisstate,jdbcType=NUMERIC},
+      </if>
+      <if test="analysistime != null">
+        ANALYSISTIME = #{analysistime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FILEID = #{fileid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zc.intf.entity.TrainViolationFile">
+    update PCS_TRAIN_VIOLATION_FILE
+    set JIAOLUHAO = #{jiaoluhao,jdbcType=NUMERIC},
+      LOCOTYPE = #{locotype,jdbcType=VARCHAR},
+      LOCOTEAMID = #{locoteamid,jdbcType=NUMERIC},
+      LOCOTEAMNAME = #{locoteamname,jdbcType=VARCHAR},
+      LOCONUMBER = #{loconumber,jdbcType=VARCHAR},
+      TRAINNUMBER = #{trainnumber,jdbcType=NUMERIC},
+      DRIVERTEAMID = #{driverteamid,jdbcType=NUMERIC},
+      DRIVERTEAMNAME = #{driverteamname,jdbcType=VARCHAR},
+      DRIVERJOBNUMBER = #{driverjobnumber,jdbcType=NUMERIC},
+      DRIVERNAME = #{drivername,jdbcType=VARCHAR},
+      VICEDRIVERJOBNUMBER = #{vicedriverjobnumber,jdbcType=NUMERIC},
+      VICEDRIVERNAME = #{vicedrivername,jdbcType=VARCHAR},
+      TOTALWEIGHT = #{totalweight,jdbcType=NUMERIC},
+      LENGTH = #{length,jdbcType=NUMERIC},
+      VEHICLENUMBER = #{vehiclenumber,jdbcType=NUMERIC},
+      KEHUO = #{kehuo,jdbcType=VARCHAR},
+      BENBU = #{benbu,jdbcType=VARCHAR},
+      DEPARTURETIME = #{departuretime,jdbcType=VARCHAR},
+      DEPARTURESTATION = #{departurestation,jdbcType=VARCHAR},
+      VIOLATIONNUMBER = #{violationnumber,jdbcType=NUMERIC},
+      SCORE = #{score,jdbcType=NUMERIC},
+      DEDUCTMARKS = #{deductmarks,jdbcType=NUMERIC},
+      VIOLATIONREMARK = #{violationremark,jdbcType=VARCHAR},
+      MODEID = #{modeid,jdbcType=NUMERIC},
+      ANALYSISSTATE = #{analysisstate,jdbcType=NUMERIC},
+      ANALYSISTIME = #{analysistime,jdbcType=VARCHAR}
+    where FILEID = #{fileid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="queryNewTime"  resultType="java.lang.String">
+    select * from (select DEPARTURETIME from PCS_TRAIN_VIOLATION_FILE order by DEPARTURETIME desc) where rownum=1
+  </select>
+
+</mapper>

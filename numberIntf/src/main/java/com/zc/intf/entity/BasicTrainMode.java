@@ -1,6 +1,8 @@
 package com.zc.intf.entity;
 
-public class BasicTrainMode {
+import java.io.Serializable;
+
+public class BasicTrainMode implements Serializable {
   
    public int id;
    public String modeName;

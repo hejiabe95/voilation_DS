@@ -68,7 +68,7 @@
 
 </insert>
 
-	<select id="quertyByFileId" parameterType="java.lang.String"
+	<select id="queryByFileId" parameterType="java.lang.String"
 		resultType="java.lang.Integer">
 	   select count(*) from PCS_TRAIN_NUMBER_VIOLATION where fileId = #{fileId}
 	</select>
