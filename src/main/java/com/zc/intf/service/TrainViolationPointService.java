@@ -7,6 +7,7 @@ import com.zc.intf.mapper.TrainViolationPointMapper;
 import com.zc.intf.util.CoreHttpUtils;
 import com.zc.intf.util.DSUtil;
 import com.zc.intf.util.JsonUtil;
+import org.apache.http.HttpException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -51,12 +52,12 @@ public class TrainViolationPointService {
 
         //如果非第一次同步就就用老数据的最晚时间
         if (null != lodNewTime && !"".equals(lodNewTime)) {
-            startTime = getTimePlus(lodNewTime, Calendar.DATE, -1);
-            endTime = getTimePlus(getNowTime(), Calendar.DATE, 1);
+            startTime = getTimePlus(lodNewTime, -lengthOfDay);
+            endTime = getTimePlus(getNowTime(), lengthOfDay);
         } else {
             //第一次同步就用当前时间减一个月
             startTime = getTimePlus(getNowTime(), Calendar.MONTH, -1);
-            endTime = getTimePlus(getNowTime(), Calendar.DATE, 1);
+            endTime = getTimePlus(getNowTime(), lengthOfDay);
         }
 
         //如果前后超过一天，每次仅仅请求一天的量
@@ -75,21 +76,34 @@ public class TrainViolationPointService {
                 url = getUrlTrainViolationPoint(loopStartTime, loopEndTime);
                 //调用接口
                 jsonRespond = CoreHttpUtils.post(url, null);
-                insertJsonStringtoDatabase(jsonRespond);
+                try {
+                    insertJsonStringtoDatabase(jsonRespond);
+                } catch (HttpException e) {
+                    log.error(e.getMessage() + "  url:  " + url);
+                }
             }
 
             //余数处理
-            url = getUrlTrainViolationPoint(loopEndTime + 1, loopEndTime + 1 + remainder);
+            url = getUrlTrainViolationPoint(getTimePlus(loopEndTime, 1),
+                    getTimePlus(loopEndTime, 1 + remainder));
             //调用接口
             jsonRespond = CoreHttpUtils.post(url, null);
-            insertJsonStringtoDatabase(jsonRespond);
+            try {
+                insertJsonStringtoDatabase(jsonRespond);
+            } catch (HttpException e) {
+                log.error(e.getMessage() + "  url:  " + url);
+            }
 
         } else {
 
             url = getUrlTrainViolationPoint(startTime, endTime);
             //调用接口
             jsonRespond = CoreHttpUtils.post(url, null);
-            insertJsonStringtoDatabase(jsonRespond);
+            try {
+                insertJsonStringtoDatabase(jsonRespond);
+            } catch (HttpException e) {
+                log.error(e.getMessage() + "  url:  " + url);
+            }
         }
 
 
@@ -98,7 +112,7 @@ public class TrainViolationPointService {
 
     }
 
-    private void insertJsonStringtoDatabase(String allinfo) {
+    private void insertJsonStringtoDatabase(String allinfo) throws HttpException {
 
         List<TrainViolationPoint> dataList = new ArrayList<>();
 
@@ -118,8 +132,7 @@ public class TrainViolationPointService {
 
         //不成功记录下来
         if (1 != code) {
-            log.error("syn data is error, msg ========" + msg);
-            return;
+            throw new HttpException("数据同步请求接口失败： " + msg);
         }
 
         setTrainViolationPoint(dataList, jsonObject);
@@ -128,10 +141,9 @@ public class TrainViolationPointService {
             try {
                 trainViolationPointMapper.insert(trainViolationPoint);
             } catch (Exception e) {
-                if(e.getMessage().contains("ORA-00001")){
+                if (e.getMessage().contains("ORA-00001")) {
                     log.info(e.getMessage());
-                }
-                else {
+                } else {
                     log.error(e.getMessage());
                 }
             }
