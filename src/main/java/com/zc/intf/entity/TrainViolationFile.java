@@ -58,6 +58,8 @@ public class TrainViolationFile implements Serializable {
 
     private String analysistime;
 
+    private String traintype;
+
     private static final long serialVersionUID = 1L;
 
     public String getFileid() {
@@ -274,5 +276,13 @@ public class TrainViolationFile implements Serializable {
 
     public void setAnalysistime(String analysistime) {
         this.analysistime = analysistime == null ? null : analysistime.trim();
+    }
+
+    public String getTraintype() {
+        return traintype;
+    }
+
+    public void setTraintype(String traintype) {
+        this.traintype = traintype;
     }
 }

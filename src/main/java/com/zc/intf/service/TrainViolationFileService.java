@@ -159,7 +159,37 @@ public class TrainViolationFileService {
 
         for (Object info : jsonObject.getJSONArray("data")) {
             JSONObject object = (JSONObject) info;
-            list.add(jsonToTrainViolationFile(object));
+            TrainViolationFile trainViolationFile = jsonToTrainViolationFile(object);
+            getTrainType(trainViolationFile);
+            list.add(trainViolationFile);
+        }
+    }
+
+    /**
+     * 通过车号统计列车类型
+     * @param trainViolationFile
+     */
+    public void getTrainType(TrainViolationFile trainViolationFile){
+        String trainNo = trainViolationFile.getTrainnumber().toString();
+        if (null != trainNo && trainNo.length() == 5){
+            //C64万吨列车（五位车号前两位为16）
+            if ("16".equals(trainNo.substring(0,2))){
+                trainViolationFile.setTraintype("C64万吨列车");
+            }
+            //两万吨列车（五位数开头1位为2的）
+            else if ("2".equals(trainNo.substring(0,1))){
+                trainViolationFile.setTraintype("两万吨列车");
+            }
+            //万吨列车（五位车号开头1位为1且第二位不为6）
+            else if ("1".equals(trainNo.substring(0,1)) && !"6".equals(trainNo.substring(1,2))){
+                trainViolationFile.setTraintype("万吨列车");
+            }
+            else {
+                trainViolationFile.setTraintype("普通列车");
+            }
+        }
+        else {
+            trainViolationFile.setTraintype("普通列车");
         }
     }
 
