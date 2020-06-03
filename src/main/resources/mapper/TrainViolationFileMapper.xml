@@ -55,7 +55,7 @@
       VEHICLENUMBER, KEHUO, BENBU, 
       DEPARTURETIME, DEPARTURESTATION, VIOLATIONNUMBER, 
       SCORE, DEDUCTMARKS, VIOLATIONREMARK, 
-      MODEID, ANALYSISSTATE, ANALYSISTIME
+      MODEID, ANALYSISSTATE, ANALYSISTIME, TRAINTYPE
       )
     values (#{fileid,jdbcType=VARCHAR}, #{jiaoluhao,jdbcType=NUMERIC}, #{locotype,jdbcType=VARCHAR}, 
       #{locoteamid,jdbcType=NUMERIC}, #{locoteamname,jdbcType=VARCHAR}, #{loconumber,jdbcType=VARCHAR}, 
@@ -65,7 +65,7 @@
       #{vehiclenumber,jdbcType=NUMERIC}, #{kehuo,jdbcType=VARCHAR}, #{benbu,jdbcType=VARCHAR}, 
       #{departuretime,jdbcType=VARCHAR}, #{departurestation,jdbcType=VARCHAR}, #{violationnumber,jdbcType=NUMERIC}, 
       #{score,jdbcType=NUMERIC}, #{deductmarks,jdbcType=NUMERIC}, #{violationremark,jdbcType=VARCHAR}, 
-      #{modeid,jdbcType=NUMERIC}, #{analysisstate,jdbcType=NUMERIC}, #{analysistime,jdbcType=VARCHAR}
+      #{modeid,jdbcType=NUMERIC}, #{analysisstate,jdbcType=NUMERIC}, #{analysistime,jdbcType=VARCHAR}, #{traintype,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zc.intf.entity.TrainViolationFile">
