@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.LaisWarnRecordMapper">
+  <resultMap id="BaseResultMap" type="com.zc.intf.entity.LaisWarnRecord">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CC" jdbcType="VARCHAR" property="cc" />
+    <result column="SJH" jdbcType="VARCHAR" property="sjh" />
+    <result column="CH" jdbcType="VARCHAR" property="ch" />
+    <result column="CX" jdbcType="VARCHAR" property="cx" />
+    <result column="SJ" jdbcType="VARCHAR" property="sj" />
+    <result column="XD" jdbcType="VARCHAR" property="xd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CC, SJH, CH, CX, SJ, XD
+  </sql>
+  <select id="selectMaxId"  resultType="java.lang.String">
+    SELECT MAX(CAST(ID AS INT)) FROM LAIS_WARN_RECORD
+  </select>
+
+  <insert id="insert" parameterType="com.zc.intf.entity.StationLive">
+    insert into LAIS_WARN_RECORD ( ID, CC, SJH, CH, CX, SJ, XD
+      )
+    values (#{id,jdbcType=VARCHAR}, #{cc,jdbcType=VARCHAR},
+      #{sjh,jdbcType=VARCHAR}, #{ch,jdbcType=VARCHAR}, #{cx,jdbcType=VARCHAR},
+      #{sj,jdbcType=VARCHAR}, #{xd,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from LAIS_WARN_RECORD
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

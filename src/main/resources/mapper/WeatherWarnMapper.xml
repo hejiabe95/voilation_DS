@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.WeatherWarnMapper">
+  <resultMap id="BaseResultMap" type="com.zc.intf.entity.WeatherWarn">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="WARN_ID" jdbcType="VARCHAR" property="warnId" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="DEFENSEADVICE" jdbcType="VARCHAR" property="defenseAdvice" />
+    <result column="PUBLISHDATE" jdbcType="VARCHAR" property="publishDate" />
+    <result column="PUBLISHPERSON" jdbcType="VARCHAR" property="publishPerson" />
+    <result column="SIGN" jdbcType="VARCHAR" property="sign" />
+    <result column="TIMEOUT" jdbcType="VARCHAR" property="timeOut" />
+    <result column="YUJINGDATE" jdbcType="VARCHAR" property="yujingDate" />
+    <result column="YUJINGLEVEL" jdbcType="VARCHAR" property="yujingLevel" />
+    <result column="YUJINGTYPE" jdbcType="VARCHAR" property="yujingType" />
+    <result column="ZHMS" jdbcType="VARCHAR" property="zhms" />
+    <result column="ZHSX" jdbcType="VARCHAR" property="zhsx" />
+    <result column="READTIME" jdbcType="VARCHAR" property="readTime" />
+    <result column="READHOUR" jdbcType="VARCHAR" property="readHour" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID,WARN_ID, CONTENT, DEFENSEADVICE, PUBLISHDATE, PUBLISHPERSON, SIGN, TIMEOUT, YUJINGDATE, YUJINGLEVEL, YUJINGTYPE,
+    ZHMS, ZHSX, READTIME, READHOUR, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WEATHER_WARN
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectRepeat" parameterType="com.zc.intf.entity.WeatherWarn" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from WEATHER_WARN
+    where WARN_ID = #{id,jdbcType=VARCHAR}
+    and SIGN = #{sign,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from WEATHER_WARN
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zc.intf.entity.WeatherWarn">
+    insert into WEATHER_WARN (WARN_ID, CONTENT, DEFENSEADVICE, PUBLISHDATE, PUBLISHPERSON, SIGN, TIMEOUT, YUJINGDATE, YUJINGLEVEL, YUJINGTYPE,
+    ZHMS, ZHSX, READTIME, READHOUR, CREATE_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{defenseAdvice,jdbcType=VARCHAR},
+      #{publishDate,jdbcType=VARCHAR}, #{publishPerson,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR},
+      #{timeOut,jdbcType=VARCHAR}, #{yujingDate,jdbcType=VARCHAR}, #{yujingLevel,jdbcType=VARCHAR},
+      #{yujingType,jdbcType=VARCHAR}, #{zhms,jdbcType=VARCHAR}, #{zhsx,jdbcType=VARCHAR},
+      #{readTime,jdbcType=VARCHAR}, #{readHour,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zc.intf.entity.WeatherWarn">
+    insert into WEATHER_WARN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="defenseAdvice != null">
+        DEFENSEADVICE,
+      </if>
+      <if test="publishDate != null">
+        PUBLISHDATE,
+      </if>
+      <if test="publishPerson != null">
+        PUBLISHPERSON,
+      </if>
+      <if test="sign != null">
+        SIGN,
+      </if>
+      <if test="timeOut != null">
+        TIMEOUT,
+      </if>
+      <if test="yujingDate != null">
+        YUJINGDATE,
+      </if>
+      <if test="yujingLevel != null">
+        YUJINGLEVEL,
+      </if>
+      <if test="yujingType != null">
+        YUJINGTYPE,
+      </if>
+      <if test="zhms != null">
+        ZHMS,
+      </if>
+      <if test="zhsx != null">
+        ZHSX,
+      </if>
+      <if test="readTime != null">
+        READTIME,
+      </if>
+      <if test="readHour != null">
+        READHOUR
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=NUMERIC},
+      </if>
+      <if test="defenseAdvice != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDate != null">
+        #{starttime,jdbcType=VARCHAR},
+      </if>
+      <if test="publishPerson != null">
+        #{publishPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=NUMERIC},
+      </if>
+      <if test="timeOut != null">
+        #{timeOut,jdbcType=NUMERIC},
+      </if>
+      <if test="yujingDate != null">
+        #{yujingDate,jdbcType=NUMERIC},
+      </if>
+      <if test="yujingLevel != null">
+        #{yujingLevel,jdbcType=NUMERIC},
+      </if>
+      <if test="yujingType != null">
+        #{yujingType,jdbcType=VARCHAR},
+      </if>
+      <if test="zhms != null">
+        #{zhms,jdbcType=NUMERIC},
+      </if>
+      <if test="zhsx != null">
+        #{zhsx,jdbcType=VARCHAR},
+      </if>
+      <if test="readTime != null">
+        #{readTime,jdbcType=NUMERIC},
+      </if>
+      <if test="readHour != null">
+        #{readHour,jdbcType=NUMERIC}
+      </if>
+    </trim>
+  </insert>
+
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.StationWeatherMapper">
+  <resultMap id="BaseResultMap" type="com.zc.intf.entity.StationWeatherForecast">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="READTIME" jdbcType="VARCHAR" property="readTime" />
+    <result column="STATION_CODE" jdbcType="VARCHAR" property="station_code" />
+    <result column="FUTURE_HOUR" jdbcType="VARCHAR" property="future_hour" />
+    <result column="TEM_MAX" jdbcType="VARCHAR" property="tem_max" />
+    <result column="VALID_HOUR" jdbcType="VARCHAR" property="validHour" />
+    <result column="TEM_MIN" jdbcType="VARCHAR" property="tem_min" />
+    <result column="WEATHER_CODE" jdbcType="VARCHAR" property="weather_code" />
+    <result column="WIND_D_CODE" jdbcType="VARCHAR" property="wind_d_code" />
+    <result column="WIND_S_CODE" jdbcType="VARCHAR" property="wind_s_code" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, READTIME, STATION_CODE, FUTURE_HOUR, TEM_MAX, VALID_HOUR, TEM_MIN, WEATHER_CODE, WIND_D_CODE, WIND_S_CODE,
+    CREATE_TIME
+  </sql>
+  <select id="selectRepeat" parameterType="com.zc.intf.entity.StationWeatherForecast" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STATION_WEATHER_FORECAST
+    where READTIME = #{readTime,jdbcType=VARCHAR}
+    and STATION_CODE = #{station_code,jdbcType=VARCHAR}
+    and FUTURE_HOUR = #{future_hour,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="insert" parameterType="com.zc.intf.entity.StationWeatherForecast">
+    insert into STATION_WEATHER_FORECAST ( READTIME, STATION_CODE, FUTURE_HOUR, TEM_MAX, VALID_HOUR, TEM_MIN, WEATHER_CODE, WIND_D_CODE, WIND_S_CODE,
+    CREATE_TIME
+      )
+    values ( #{readTime,jdbcType=VARCHAR}, #{station_code,jdbcType=VARCHAR},
+      #{future_hour,jdbcType=VARCHAR}, #{tem_max,jdbcType=VARCHAR}, #{validHour,jdbcType=VARCHAR},
+      #{tem_min,jdbcType=VARCHAR}, #{weather_code,jdbcType=VARCHAR}, #{wind_d_code,jdbcType=VARCHAR},
+      #{wind_s_code,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from STATION_WEATHER_FORECAST
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

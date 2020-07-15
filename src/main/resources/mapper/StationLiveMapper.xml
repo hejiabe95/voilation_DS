@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zc.intf.mapper.StationLiveMapper">
+  <resultMap id="BaseResultMap" type="com.zc.intf.entity.StationLive">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="DATETIME" jdbcType="VARCHAR" property="datetime" />
+    <result column="PRE_P1H" jdbcType="VARCHAR" property="pre_p1h" />
+    <result column="WIND_D" jdbcType="VARCHAR" property="wind_d" />
+    <result column="WIND_S" jdbcType="VARCHAR" property="wind_s" />
+    <result column="ROADTEM" jdbcType="VARCHAR" property="roadtem" />
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="READTIME" jdbcType="VARCHAR" property="readTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DATETIME, PRE_P1H, WIND_D, WIND_S, ROADTEM, STATIONID, CREATE_TIME, READTIME
+  </sql>
+  <select id="selectMaxTime"  resultType="java.lang.String">
+    SELECT MAX(READTIME) FROM STATION_LIVE
+  </select>
+
+  <insert id="insert" parameterType="com.zc.intf.entity.StationLive">
+    insert into STATION_LIVE ( DATETIME, PRE_P1H, WIND_D, WIND_S, ROADTEM, STATIONID, CREATE_TIME, READTIME
+      )
+    values (#{datetime,jdbcType=VARCHAR}, #{pre_p1h,jdbcType=VARCHAR},
+      #{wind_d,jdbcType=VARCHAR}, #{wind_s,jdbcType=VARCHAR}, #{roadtem,jdbcType=VARCHAR},
+      #{stationid,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{readTime,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from STATION_LIVE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

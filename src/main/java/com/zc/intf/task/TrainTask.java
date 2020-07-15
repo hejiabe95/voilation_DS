@@ -48,13 +48,24 @@ public class TrainTask {
     @Resource
     private TrainViolationPointService trainViolationPointService;
 
+    @Resource
+    private WeatherWarnService weatherWarnService;
+
+    @Resource
+    private StationWeatherService stationWeatherService;
+
+    @Resource
+    private StationLiveService stationLiveService;
+
+    @Resource
+    private LaisWarnRecordService laisWarnRecordService;
 
     /**
      * 1.机车得分表数据同步
      * 已经弃用
      */
     public void doTrainNumberViolation() throws Exception {
-	    trainNumberService.doDS();
+        trainNumberService.doDS();
     }
 
     /**
@@ -83,7 +94,7 @@ public class TrainTask {
      */
     @Scheduled(cron = "0 0 0/1 * * ?")
     @Async
-    public void doTrainViolationFile() throws Exception{
+    public void doTrainViolationFile() throws Exception {
         trainViolationFileService.doDS();
     }
 
@@ -93,11 +104,49 @@ public class TrainTask {
      */
     @Scheduled(cron = "0 0 0/1 * * ?")
     @Async
-    public void doTrainViolationPoint() throws Exception{
+    public void doTrainViolationPoint() throws Exception {
         trainViolationPointService.doDS();
     }
 
+    /**
+     * 天气预警
+     * 每10分钟更新
+     */
+    @Scheduled(cron = "0 0/10 * * * ?")
+    @Async
+    public void doWeatherWarn() {
+        weatherWarnService.doDS();
+    }
 
+    /**
+     * 7天站点天气预报
+     * 每天更新
+     */
+    @Scheduled(cron = "0 0 17/1 * * ?")
+    @Async
+    public void doStationWeather() {
+        stationWeatherService.doDS();
+    }
+
+    /**
+     * 铁路站实况数据同步
+     * 每两分钟更新
+     */
+    @Scheduled(cron = "0 0/2 * * * ?")
+    @Async
+    public void doStationLive() {
+        stationLiveService.doDS();
+    }
+
+    /**
+     * 盹睡预警同步
+     * 每两分钟更新
+     */
+    @Scheduled(cron = "0 0/30 * * * ?")
+    @Async
+    public void doLaisWarnRecord() {
+        laisWarnRecordService.doDS();
+    }
 }
 
 
