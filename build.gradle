@@ -5,13 +5,12 @@ buildscript {
         springBootVersion = '1.5.9.RELEASE'
     }
     repositories {
-        jcenter()
-        mavenLocal()
-        mavenCentral()
-        maven { url "http://repo.spring.io/release" }
-        maven { url "http://repo.spring.io/milestone" }
-        maven { url "http://repo.spring.io/snapshot" }
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://maven.aliyun.com/repository/spring-plugin" }
+        maven { url "https://plugins.gradle.org/m2" }
+        maven { url "https://repo1.maven.org/maven2/" }
+        maven { url "https://repo.maven.apache.org/maven2/" }
     }
     dependencies {
         classpath "io.spring.gradle:dependency-management-plugin:${springIOVersion}"
@@ -61,12 +60,11 @@ mybatisGenerator {
 
 
 repositories {
-    maven { url "https://repo.spring.io/libs-milestone" }
-    maven { url "http://repo.maven.apache.org/maven2" }
-    mavenLocal()
-    mavenCentral()
-    jcenter()
-    // more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc
+    maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter" }
+    maven { url "https://maven.aliyun.com/repository/spring-plugin" }
+    maven { url "http://maven.icm.edu.pl/artifactory/repo/" }
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "http://maven.xwiki.org/externals/" }
 }
 dependencies {
 
